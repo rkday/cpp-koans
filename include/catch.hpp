@@ -8321,6 +8321,7 @@ namespace Catch {
     }
 
     std::string AssertionResult::getExpandedExpression() const {
+        return getExpression();
         std::string expr = m_resultData.reconstructExpression();
         return expr.empty()
                 ? getExpression()
