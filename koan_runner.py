@@ -7,7 +7,7 @@ import os
 KOANS = [
 "introduction.cpp",
 "pointers.cpp",
-"references.cpp"
+"references.cpp",
 "const_compile.cpp",
 "optional.cpp"
         ]
@@ -43,5 +43,7 @@ for k in koans_to_run:
         print("{} out of {} koans ran successfully".format(successful, len(KOANS)))
         print("Koan src/{} failed".format(k))
         print("Check the output above and fix up the file to proceed")
+        if os.environ.get("RUN_ALL"):
+            continue
         sys.exit(1)
 
