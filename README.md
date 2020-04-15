@@ -148,7 +148,7 @@ Because these demonstrate things forbidden by the language, you will generally p
 - [ ] Time
 - [ ] IO streams
 - [ ] Filesystem
-- [ ] std::optional
+- [x] std::optional
 - [ ] Type-safe unions
 
 ### Multithreading

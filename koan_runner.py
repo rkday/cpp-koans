@@ -7,14 +7,16 @@ import os
 KOANS = [
 "introduction.cpp",
 "pointers.cpp",
-"const_compile.cpp"
+"references.cpp"
+"const_compile.cpp",
+"optional.cpp"
         ]
 
 def run_koan(cpp_file):
     print("=== Compiling koan {} ===".format(cpp_file))
     os.makedirs("build", exist_ok=True)
     output_file = "build/" + cpp_file.replace(".cpp", "")
-    p = subprocess.run(["clang++", "-ferror-limit=2", "-Wall", "-Werror", "-Wno-tautological-constant-out-of-range-compare", "-Wno-unused-variable", "-o", output_file, "-I", "include", "src/" + cpp_file])
+    p = subprocess.run(["clang++", "-std=c++17", "-ferror-limit=2", "-Wall", "-Werror", "-Wno-tautological-constant-out-of-range-compare", "-Wno-unused-variable", "-o", output_file, "-I", "include", "src/" + cpp_file])
     p.check_returncode()
     print("=== Running koan {} ===".format(cpp_file))
     if os.environ.get("RUN_ALL"):
