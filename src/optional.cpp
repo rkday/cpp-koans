@@ -62,18 +62,44 @@ TEST_CASE( "the * and -> dereference operators work on a std::optional") {
   CHECK(s->size() == REPLACE_THIS_VALUE);
 }
 
-TEST_CASE( "dereferencing a std::nullopt throws std::bad_optional_access") {
+TEST_CASE( "dereferencing a std::nullopt using value() throws std::bad_optional_access") {
 
   std::optional<std::string> s = std::nullopt;
-  std::string s2;
 
   int x;
 
   try {
-    x = s->size();
+    x = s.value().size();
   } catch (std::bad_optional_access& e) {
     x = 400000;
   }
 
   CHECK(x == REPLACE_THIS_VALUE);
+}
+
+TEST_CASE( "dereferencing a std::nullopt using * or -> is unchecked (and undefined behaviour!)") {
+
+  std::optional<int> s = std::nullopt;
+
+  int x;
+  bool caught_exception = false;
+
+  try {
+    x = *s;
+  } catch (std::bad_optional_access& e) {
+    caught_exception = true;
+  }
+
+  // Delete one of these
+  CHECK(caught_exception);
+  CHECK_FALSE(caught_exception);
+}
+
+TEST_CASE( "value_or can be used to provide a default") {
+
+  std::optional<int> x;
+  std::optional<int> y{15};
+
+  CHECK(x.value_or(100) == REPLACE_THIS_VALUE);
+  CHECK(y.value_or(100) == REPLACE_THIS_VALUE);
 }
