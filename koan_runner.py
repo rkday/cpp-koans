@@ -9,7 +9,9 @@ KOANS = [
 "pointers.cpp",
 "references.cpp",
 "const_compile.cpp",
-"optional.cpp"
+"optional.cpp",
+"namespaces.cpp",
+"namespaces_compile.cpp"
         ]
 
 def run_koan(cpp_file):
