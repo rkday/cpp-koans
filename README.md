@@ -128,7 +128,7 @@ Because these demonstrate things forbidden by the language, you will generally p
 - [x] The 'const' keyword
 - [ ] Control loops
 - [ ] Default arguments
-- [ ] Namespaces
+- [x] Namespaces
 - [ ] Exceptions
 - [ ] enum/enum class
 - [ ] Integer conversion
